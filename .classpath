@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/EmergencyLanding"/>
+	<classpathentry kind="lib" path="lwjgl.jar" sourcepath="/EmergencyLanding/src/res/libs/sources/lwjgl-src.zip">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/EmergencyLanding/src/res/libs/javadocs/lwjgl-docs.zip!/javadoc"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lwjgl_util.jar" sourcepath="/EmergencyLanding/src/res/libs/sources/lwjgl-src.zip">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/EmergencyLanding/src/res/libs/javadocs/lwjgl-docs.zip!/javadoc"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="jinput.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
