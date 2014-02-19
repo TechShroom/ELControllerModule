@@ -38,9 +38,15 @@ public class ControllerModule extends IModule {
         for (int i = 0; i < controllers.length; i++) {
             controllers[i] = Controllers.getController(i);
             System.err.println("Loading controller (id: " + i + ") of type "
-                    + controllers[i] + ".");
+                    + controllerToString(controllers[i]) + ".");
         }
         System.err.println("Loaded Controllers via Mods interface.");
+    }
+
+    public static String controllerToString(Controller c) {
+        return c.getName() + ": [axisCount: " + c.getAxisCount()
+                + ", buttonCount: " + c.getButtonCount() + ", rumblerCount: "
+                + c.getRumblerCount() + "]";
     }
 
     public Controller[] getControllers() {
