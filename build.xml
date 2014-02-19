@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project basedir="." default="build" name="ELControllerModule">
+<project basedir="." default="build-jar" name="ELControllerModule">
 	<property environment="env" />
 	<property name="ECLIPSE_HOME" value="../../../Downloads/eclipse-SDK-4.2.2-win32-x86_64/eclipse" />
 	<property name="KCore.location" value="../../../Dropbox/KCore" />
