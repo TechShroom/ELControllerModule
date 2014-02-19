@@ -1,5 +1,9 @@
 package elmodule.control;
 
+import org.lwjgl.LWJGLException;
+import org.lwjgl.input.Controller;
+import org.lwjgl.input.Controllers;
+
 import k.core.util.classes.StackTraceInfo;
 import emergencylanding.k.exst.modules.IModule;
 import emergencylanding.k.library.main.KMain;
@@ -8,6 +12,7 @@ import emergencylanding.k.library.util.LUtils;
 public class ControllerModule extends IModule {
     public static final String FULL_BINARY_NAME = ControllerModule.class
             .getName();
+    private Controller[] controllers = new Controller[0];
 
     public ControllerModule() {
         try {
@@ -22,7 +27,23 @@ public class ControllerModule extends IModule {
 
     @Override
     public void init(KMain instance) {
+        System.err.println("Loading Controllers...");
+        try {
+            Controllers.create();
+        } catch (LWJGLException e) {
+            System.err.println("Failed.");
+            throw new RuntimeException(e);
+        }
+        controllers = new Controller[Controllers.getControllerCount()];
+        for (int i = 0; i < controllers.length; i++) {
+            controllers[i] = Controllers.getController(i);
+            System.err.println("Loading controller (id: " + i + ") of type "
+                    + controllers[i] + ".");
+        }
         System.err.println("Loaded Controllers via Mods interface.");
     }
 
+    public Controller[] getControllers() {
+        return controllers;
+    }
 }
