@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. --><project basedir="." default="build" name="ELControllerModule">
+    <property environment="env"/>
+    <property name="ECLIPSE_HOME" value="../../../Downloads/eclipse-SDK-4.2.2-win32-x86_64/eclipse"/>
+    <property name="KCore.location" value="../../../Dropbox/KCore"/>
+    <property name="EmergencyLanding.location" value="../../../Dropbox/EmergencyLanding"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.6"/>
+    <property name="source" value="1.6"/>
+    <path id="KCore.classpath">
+        <pathelement location="${KCore.location}/bin"/>
+        <pathelement location="${KCore.location}/libs/jython.jar"/>
+        <pathelement location="${KCore.location}/libs/netty.jar"/>
+        <pathelement location="${KCore.location}/libs/gson.jar"/>
+        <pathelement location="${KCore.location}/libs/RXTXcomm.jar"/>
+    </path>
+    <path id="EmergencyLanding.classpath">
+        <pathelement location="${EmergencyLanding.location}/bin-kenzie/"/>
+        <path refid="KCore.classpath"/>
+        <pathelement location="${EmergencyLanding.location}/src/res/libs/AppleJavaExtensions.jar"/>
+        <pathelement location="${EmergencyLanding.location}/src/res/libs/asm-debug-all.jar"/>
+        <pathelement location="${EmergencyLanding.location}/src/res/libs/commons-io-2.4.jar"/>
+        <pathelement location="${EmergencyLanding.location}/src/res/libs/gson.jar"/>
+        <pathelement location="${EmergencyLanding.location}/src/res/libs/jinput.jar"/>
+        <pathelement location="${EmergencyLanding.location}/src/res/libs/lwjgl.jar"/>
+        <pathelement location="${EmergencyLanding.location}/src/res/libs/lzma.jar"/>
+        <pathelement location="${EmergencyLanding.location}/src/res/libs/netty.jar"/>
+        <pathelement location="${EmergencyLanding.location}/src/res/libs/slick-util.jar"/>
+        <pathelement location="${EmergencyLanding.location}/src/res/libs/TWL.jar"/>
+        <pathelement location="${EmergencyLanding.location}/src/res/libs/TWLEffects.jar"/>
+        <pathelement location="${EmergencyLanding.location}/src/res/libs/xpp3-1.1.4c.jar"/>
+        <pathelement location="${EmergencyLanding.location}/src/res/libs/zip4j_1.3.1.jar"/>
+        <pathelement location="${EmergencyLanding.location}/src/res/libs/lwjgl_util.jar"/>
+    </path>
+    <path id="ELControllerModule.classpath">
+        <pathelement location="bin"/>
+        <path refid="EmergencyLanding.classpath"/>
+        <pathelement location="lwjgl.jar"/>
+        <pathelement location="lwjgl_util.jar"/>
+        <pathelement location="jinput.jar"/>
+    </path>
+    <target name="init">
+        <mkdir dir="bin"/>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="src">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="bin"/>
+    </target>
+    <target depends="clean" name="cleanall">
+        <ant antfile="build.xml" dir="${KCore.location}" inheritAll="false" target="clean"/>
+        <ant antfile="build.xml" dir="${EmergencyLanding.location}" inheritAll="false" target="clean"/>
+    </target>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects">
+        <ant antfile="build.xml" dir="${KCore.location}" inheritAll="false" target="build-project">
+            <propertyset>
+                <propertyref name="build.compiler"/>
+            </propertyset>
+        </ant>
+        <ant antfile="build.xml" dir="${EmergencyLanding.location}" inheritAll="false" target="build-project">
+            <propertyset>
+                <propertyref name="build.compiler"/>
+            </propertyset>
+        </ant>
+    </target>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src"/>
+            <classpath refid="ELControllerModule.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        <unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+        <antcall target="build"/>
+    </target>
+</project>
