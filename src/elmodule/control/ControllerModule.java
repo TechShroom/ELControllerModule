@@ -1,12 +1,14 @@
 package elmodule.control;
 
-
 import emergencylanding.k.exst.modules.IModule;
 import emergencylanding.k.library.main.KMain;
 
 public class ControllerModule extends IModule {
+    public static final String FULL_BINARY_NAME = ControllerModule.class
+            .getName();
 
-    public ControllerModule() {
+    private ControllerModule() {
+        throw new AssertionError("Don't build this, get it from ModuleSystem!");
     }
 
     @Override
