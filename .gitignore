@@ -6,6 +6,9 @@
 *.war
 *.ear
 
+# Compiled stuff
+module-control.jar
+
 # Others #
 *.class
 .metadata
