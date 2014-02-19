@@ -52,7 +52,7 @@
 		<delete file="module-control.jar" />
 	</target>
 	<target depends="clean" name="cleanall">
-		<ant antfile="build.xml" dir="${KCore.location}" inheritAll="false" target="clean" />
+		<ant antfile="build.xml" dir="${KCore.location}" inheritAll="false" target="nofailclean" />
 		<ant antfile="build.xml" dir="${EmergencyLanding.location}" inheritAll="false" target="clean" />
 	</target>
 	<target depends="build-subprojects,build-project" name="build" />
