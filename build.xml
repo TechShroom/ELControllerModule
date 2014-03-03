@@ -99,6 +99,16 @@
 			</fileset>
 		</jar>
 	</target>
+	<target name="build-jar-auto">
+		<antcall target="clean" />
+		<antcall target="build-project" />
+		<antcall target="create-service" />
+		<jar basedir="bin" jarfile="module-control.jar">
+			<fileset dir="bin">
+				<include name="**" />
+			</fileset>
+		</jar>
+	</target>
 
 	<property name="servfile" value="bin/META-INF/services/emergencylanding.k.exst.mods.IMod" />
 	<target name="create-service">
