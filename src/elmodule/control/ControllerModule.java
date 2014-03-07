@@ -10,7 +10,7 @@ import emergencylanding.k.library.main.KMain;
 import emergencylanding.k.library.util.LUtils;
 
 public class ControllerModule extends IModule {
-    public static final String FULL_BINARY_NAME = ControllerModule.class
+    private static final String FULL_BINARY_NAME = ControllerModule.class
             .getName();
     private Controller[] controllers = new Controller[0];
 
@@ -51,5 +51,9 @@ public class ControllerModule extends IModule {
 
     public Controller[] getControllers() {
         return controllers;
+    }
+
+    public static String getFullBinaryName() {
+        return FULL_BINARY_NAME;
     }
 }
